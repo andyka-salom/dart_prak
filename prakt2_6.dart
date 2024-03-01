@@ -1,24 +1,33 @@
-mixin A {
-  void methodA() {
-    print("Method from mixin A");
+
+mixin Flyable {
+  void fly() {
+    print("Flying...");
   }
 }
 
-mixin B {
-  void methodB() {
-    print("Method from mixin B");
+mixin Swimable {
+  void swim() {
+    print("Swimming...");
   }
 }
 
-class C with A, B {
-  void methodC() {
-    print("Method from class C");
-  }
+class Bird with Flyable {
+  String name;
+
+  Bird(this.name);
+}
+class Fish with Swimable {
+  String name;
+
+  Fish(this.name);
 }
 
 void main() {
-  C obj = C();
-  obj.methodA();
-  obj.methodB();
-  obj.methodC();
+
+  var bird = Bird("Sparrow");
+  var fish = Fish("Goldfish");
+
+  bird.fly();
+
+  fish.swim();
 }
