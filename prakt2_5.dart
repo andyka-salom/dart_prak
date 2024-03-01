@@ -8,7 +8,6 @@ class Car implements Vehicle {
   String brand;
   bool isRunning;
 
-  // Constructor
   Car(this.brand, this.isRunning);
 
   @override
