@@ -1,18 +1,19 @@
 import 'dart:convert';
-import 'dart:io';
 
-class JSONHandler {
-  void processJson(Map<String, dynamic> jsonData) {
-    print(jsonData);
-    // Lakukan operasi lainnya dengan data JSON di sini
+class DataProcessor {
+  void processData(String jsonString) {
+
+    var jsonData = jsonDecode(jsonString);
+
+    print("Nama: ${jsonData["nama"]}");
+    print("Umur: ${jsonData["umur"]}");
+    print("Alamat: ${jsonData["alamat"]}");
+    print("Pekerjaan: ${jsonData["pekerjaan"]}");
   }
 }
 
 void main() {
-  stdout.write("Masukkan data JSON: ");
-  String jsonString = stdin.readLineSync()!;
-  Map<String, dynamic> jsonData = jsonDecode(jsonString);
-
-  JSONHandler handler = JSONHandler();
-  handler.processJson(jsonData);
+  var jsonString = '{"nama": "John Doe", "umur": 30, "alamat": "Jl. Contoh No. 123", "pekerjaan": "Pengembang Perangkat Lunak"}';
+  var processor = DataProcessor();
+  processor.processData(jsonString);
 }

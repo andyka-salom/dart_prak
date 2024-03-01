@@ -1,41 +1,46 @@
-
-import 'dart:io';
-
 class ClassABC {
-  int a;
-  int b;
-  String c;
+  var a;
+  var b;
+  var c;
 
+  // Constructor dengan parameter a, b, dan c
   ClassABC(this.a, this.b, this.c);
 
-  ClassABC.named(this.a, {this.b = 0, this.c = "string di ClassABC"});
+  // Constructor named dengan parameter a dan b opsional
+  ClassABC.named(this.a, [this.b = 0, this.c = "string di ClassABC"]);
 
+  // Fungsi display untuk menampilkan nilai a, b, dan c
   void display() {
     print("Nilai a: $a");
     print("Nilai b: $b");
     print("Nilai c: $c");
   }
 
-  int add() {
-    return a + b;
+  // Fungsi add untuk menjumlahkan a dan b
+  dynamic add() {
+    if (a is num && b is num) {
+      return a + b;
+    } else {
+      return "Tidak bisa menjumlahkan, a dan b bukan angka.";
+    }
   }
 }
 
 void main() {
-  stdout.write("Masukkan nilai a: ");
-  int inputA = int.parse(stdin.readLineSync()!);
+  // Membuat objek menggunakan constructor pertama
+  var objek1 = ClassABC(10, 20, "String C");
 
-  stdout.write("Masukkan nilai b: ");
-  int inputB = int.parse(stdin.readLineSync()!);
+  // Membuat objek menggunakan constructor named
+  var objek2 = ClassABC.named(5, 15);
 
-  stdout.write("Masukkan nilai c: ");
-  String inputC = stdin.readLineSync()!;
+  // Memanggil fungsi display dan add dari objek pertama
+  print("Objek 1:");
+  objek1.display();
+  print("Hasil penjumlahan a dan b: ${objek1.add()}");
+  print("");
 
-  ClassABC obj1 = ClassABC(inputA, inputB, inputC);
-  obj1.display();
-  print("Hasil penjumlahan: ${obj1.add()}");
-
-  ClassABC obj2 = ClassABC.named(inputA, c: inputC);
-  obj2.display();
-  print("Hasil penjumlahan: ${obj2.add()}");
+  // Memanggil fungsi display dan add dari objek kedua
+  print("Objek 2:");
+  objek2.display();
+  print("Hasil penjumlahan a dan b: ${objek2.add()}");
 }
