@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 mixin A {
   void methodA() {
     print("Method from mixin A");
